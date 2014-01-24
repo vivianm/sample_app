@@ -52,5 +52,11 @@ end
     expect(page).to have_title(full_title('Sign up now!')) 
     click_link "sample app"
     expect(page).to have_title(full_title('sample app')) 
+    expect(page).to have_title(full_title('Contact'))
+    click_link "Home"
+    click_link "Sign up now!"
+    expect(page)#.to have_title('| Home')
+    click_link "sample app"
+    expect(page)#.to have_title(full_title('sample app'))
   end
 end
