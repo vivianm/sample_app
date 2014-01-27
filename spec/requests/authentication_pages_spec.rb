@@ -74,7 +74,6 @@ describe "Authentication" do
           before { visit users_path }
           it { should have_title('Sign in') }
       end
-    end
 
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
@@ -93,4 +92,6 @@ describe "Authentication" do
       end
     end
   end
+end
+end
 end
