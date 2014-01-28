@@ -5,8 +5,9 @@ describe "User pages" do
 	subject { page }
 
   describe "index" do
+    before do
     let(:user) { FactoryGirl.create(:user) }
-    before (:each) do
+    before(:each) do
       sign_in user
       visit users_path
     end
@@ -27,7 +28,6 @@ describe "User pages" do
       end
     end
   end
-end
 
     describe "profile page" do
       let(:user) { FactoryGirl.create(:user) }
@@ -81,7 +81,6 @@ end
       sign_in user
       visit edit_user_path(user)
     end
-
     describe "page" do
       it { should have_content("Update your profile") }
       it { should have_title("Edit user") }
@@ -112,4 +111,6 @@ end
       specify { expect(user.reload.email).to eq new_email }
     end
   end
+end
+end
 end

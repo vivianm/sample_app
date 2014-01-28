@@ -21,11 +21,7 @@ describe "Authentication" do
 
    describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
-      before  do
-        fill_in "Email", with: user.email.upcase
-        fill_in "Password", with: user.password
-        click_button "Sign in"
-      end
+      before { sign_in user }
 
       it { should have_title(user.name) }
       it { should have_link('Users',       href: users_path) }
@@ -78,7 +74,7 @@ describe "Authentication" do
           before { visit users_path }
           it { should have_title('Sign in') }
       end
-
+end
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
       let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
@@ -98,4 +94,4 @@ describe "Authentication" do
   end
 end
 end
-end
+
