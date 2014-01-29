@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     has_secure_password 
     validates :password, length: { minimum: 6 }
 
-    def User.new_remember_token
+  def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
 
@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
 
   def follow!(other_user)
     relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
   end
 
   private
